@@ -2,14 +2,10 @@
 
 import { ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import ImageContainer from './ImageContainer';
 
 interface ContentSectionProps {
   title?: string;
   children: ReactNode;
-  imageUrl?: string;
-  imageAlt?: string;
-  imagePosition?: 'left' | 'right';
   bgColor?: 'light' | 'dark' | 'white';
   id?: string;
   className?: string;
@@ -18,9 +14,6 @@ interface ContentSectionProps {
 export default function ContentSection({
   title,
   children,
-  imageUrl,
-  imageAlt = '',
-  imagePosition = 'right',
   bgColor = 'light',
   id,
   className = '',
@@ -56,45 +49,17 @@ export default function ContentSection({
           </motion.h2>
         )}
         
-        <div className={`flex flex-col ${imagePosition === 'left' ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 items-start`}>
-          <motion.div 
-            initial={{ opacity: 0, x: imagePosition === 'left' ? 20 : -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className={`w-full ${imageUrl ? 'md:w-7/12' : 'md:w-full'}`}
-          >
-            <div className="prose prose-lg max-w-none dark:prose-invert">
-              {children}
-            </div>
-          </motion.div>
-          
-          {imageUrl && (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="w-full md:w-5/12"
-            >
-              {imageUrl.startsWith('/') ? (
-                <ImageContainer
-                  src={imageUrl}
-                  alt={imageAlt}
-                  height={320}
-                  className="rounded-lg shadow-md"
-                  priority
-                />
-              ) : (
-                <img 
-                  src={imageUrl} 
-                  alt={imageAlt}
-                  className="w-full h-auto rounded-lg shadow-md" 
-                />
-              )}
-            </motion.div>
-          )}
-        </div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-4xl mx-auto"
+        >
+          <div className="prose prose-lg max-w-none dark:prose-invert">
+            {children}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -70,30 +70,30 @@ Okay, understood. Let's integrate the detailed descriptions for all relevant pha
 ### **Phase 3: Core Component Overhaul (File Cards & Content Display)**
 
 *   **Task:** **Consolidate/Refine Card Components:**
-    *   `[ ]` **Confirm Target Component:** Standardize on using `InfoCard.tsx` for displaying features/items with an image and text, mimicking the Wolt merchant card style.
-    *   `[ ]` **Deprecate `FeatureCard`:** Remove `FeatureCard.tsx` and its usage from `src/app/page.tsx` ("Real Wolt Experience" section). Refactor `featureData.ts` if necessary or adapt `InfoCard` to handle its data structure.
+    *   `[x]` **Confirm Target Component:** Standardize on using `InfoCard.tsx` for displaying features/items with an image and text, mimicking the Wolt merchant card style.
+    *   `[x]` **Deprecate `FeatureCard`:** Remove `FeatureCard.tsx` and its usage from `src/app/page.tsx` ("Real Wolt Experience" section). Refactor `featureData.ts` if necessary or adapt `InfoCard` to handle its data structure.
 
 *   **Task:** **Define and Implement Precise `InfoCard` Style (Based on Wolt Reference):**
-    *   `[ ]` **Overall Structure:** `WoltCard` > `div (Image Area)` > `div (Text Area)`.
-    *   `[ ]` **Card Container (`WoltCard`):**
-        *   `[ ]` Apply `bg-white dark:bg-gray-800`, `rounded-xl`, `shadow-md`, `border border-gray-200 dark:border-gray-700`, `overflow-hidden`.
-        *   `[ ]` Hover Effect (`interactive={true}`): Add `hover:shadow-lg`, `hover:-translate-y-1`, `transition-all duration-200`.
-    *   `[ ]` **Image Area (Top):**
-        *   `[ ]` Container Div: Add `px-6 pt-6`. (This provides padding around the image).
-        *   `[ ]` `ImageContainer`: Use `height={180}` (or adjust for aspect ratio), `className="mx-auto"` (if needed for centering), ensure image inside uses `object-contain`. Ensure `priority` prop is used judiciously.
-    *   `[ ]` **Text Area (Bottom):**
-        *   `[ ]` Container Div: Add `p-6 pt-4`. Add `flex flex-col flex-grow` if used in a grid to ensure consistent card height and bottom-alignment of links.
-        *   `[ ]` Title (`h3`): Apply `font-omnes font-bold text-xl mb-3 text-gray-900 dark:text-white`.
-        *   `[ ]` Description (`p`): Apply `text-base text-gray-700 dark:text-gray-300`. Add `flex-grow` if needed for grid alignment.
-        *   `[ ]` Link (Optional): Apply `mt-4 pt-2`. Style link: `text-[--wolt-cyan] hover:text-[--wolt-cyan-light] font-medium inline-flex items-center`. Add SVG arrow icon.
+    *   `[x]` **Overall Structure:** `WoltCard` > `div (Image Area)` > `div (Text Area)`.
+    *   `[x]` **Card Container (`WoltCard`):**
+        *   `[x]` Apply `bg-white dark:bg-gray-800`, `rounded-xl`, `shadow-md`, `border border-gray-200 dark:border-gray-700`, `overflow-hidden`.
+        *   `[x]` Hover Effect (`interactive={true}`): Add `hover:shadow-lg`, `hover:-translate-y-1`, `transition-all duration-200`.
+    *   `[x]` **Image Area (Top):**
+        *   `[x]` Container Div: Add `px-6 pt-6`. (This provides padding around the image).
+        *   `[x]` `ImageContainer`: Use `height={180}` (or adjust for aspect ratio), `className="mx-auto"` (if needed for centering), ensure image inside uses `object-contain`. Ensure `priority` prop is used judiciously.
+    *   `[x]` **Text Area (Bottom):**
+        *   `[x]` Container Div: Add `p-6 pt-4`. Add `flex flex-col flex-grow` if used in a grid to ensure consistent card height and bottom-alignment of links.
+        *   `[x]` Title (`h3`): Apply `font-omnes font-bold text-xl mb-3 text-gray-900 dark:text-white`.
+        *   `[x]` Description (`p`): Apply `text-base text-gray-700 dark:text-gray-300`. Add `flex-grow` if needed for grid alignment.
+        *   `[x]` Link (Optional): Apply `mt-4 pt-2`. Style link: `text-[--wolt-cyan] hover:text-[--wolt-cyan-light] font-medium inline-flex items-center`. Add SVG arrow icon.
 
 *   **Task:** **Implement `InfoCard` for Homepage Feature Display:**
-    *   `[ ]` **"Why Cancel Wolt?" Section:** Remove the three plain links under the title.
-    *   `[ ]` Replace with `<InfoCardGrid columns={3}>`. Populate with the first 3 items (Pricing, Workers, Restaurants), using appropriate images (e.g., `unfair_pricing.png`, `fair_pay_for_workers.png`, `hurting_restaurants.png`) inside each `InfoCard`. Link each card to the respective page (`/pricing`, `/workers`, `/restaurants`).
-    *   `[ ]` **"Real Wolt Experience" Section:**
-        *   `[ ]` Remove the black background (`bg-black`) and the `FeatureCardGrid` component.
-        *   `[ ]` Replace with a new section (e.g., `bg-gray-100 dark:bg-gray-800`) containing an `InfoCardGrid` (likely `columns={3}`).
-        *   `[ ]` Populate this grid with the six items from `featureData.ts` (`hidden_cost.png`, `unfair_pricing.png`, etc.). Ensure images are displayed *inside* each `InfoCard`. Link each card appropriately (some link to `/pricing`, `/workers`, `/restaurants`, `/pledge`, `/alternatives`).
+    *   `[x]` **"Why Cancel Wolt?" Section:** Remove the three plain links under the title.
+    *   `[x]` Replace with `<InfoCardGrid columns={3}>`. Populate with the first 3 items (Pricing, Workers, Restaurants), using appropriate images (e.g., `unfair_pricing.png`, `fair_pay_for_workers.png`, `hurting_restaurants.png`) inside each `InfoCard`. Link each card to the respective page (`/pricing`, `/workers`, `/restaurants`).
+    *   `[x]` **"Real Wolt Experience" Section:**
+        *   `[x]` Remove the black background (`bg-black`) and the `FeatureCardGrid` component.
+        *   `[x]` Replace with a new section (e.g., `bg-gray-100 dark:bg-gray-800`) containing an `InfoCardGrid` (likely `columns={3}`).
+        *   `[x]` Populate this grid with the six items from `featureData.ts` (`hidden_cost.png`, `unfair_pricing.png`, etc.). Ensure images are displayed *inside* each `InfoCard`. Link each card appropriately (some link to `/pricing`, `/workers`, `/restaurants`, `/pledge`, `/alternatives`).
 
 *   **Task:** **Refactor Content Pages (`/pricing`, `/workers`, `/restaurants`):**
     *   `[ ]` **Remove Standalone Images:** Search and remove `ImageContainer` or `<img>` tags used directly within `ContentSection` components on these pages.

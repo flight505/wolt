@@ -5,8 +5,8 @@ import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import ContentSection from '@/components/ContentSection';
 import Citation from '@/components/Citation';
-import FeatureCardGrid from '@/components/FeatureCardGrid';
-import featureData from '@/data/featureData';
+import InfoCardGrid from '@/components/InfoCardGrid';
+import infoCardData from '@/data/infoCardData';
 
 export default function Home() {
   return (
@@ -40,62 +40,24 @@ export default function Home() {
                 and support fairer alternatives.
               </motion.p>
               
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
-              >
-                {/* Card 1 */}
-                <Link href="/pricing" className="block">
-                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 h-full hover:shadow-lg transition-shadow">
-                    <div className="text-wolt-blue dark:text-wolt-light text-2xl font-bold mb-4">01.</div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Overpriced & Unfair Pricing</h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      High hidden fees and commissions up to 30% make your food significantly more expensive.
-                    </p>
-                  </div>
-                </Link>
-                
-                {/* Card 2 */}
-                <Link href="/workers" className="block">
-                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 h-full hover:shadow-lg transition-shadow">
-                    <div className="text-wolt-blue dark:text-wolt-light text-2xl font-bold mb-4">02.</div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Exploitation of Delivery Workers</h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      Couriers lack basic worker protections, fair pay, and benefits standard in Danish jobs.
-                    </p>
-                  </div>
-                </Link>
-                
-                {/* Card 3 */}
-                <Link href="/restaurants" className="block">
-                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 border border-gray-200 dark:border-gray-700 h-full hover:shadow-lg transition-shadow">
-                    <div className="text-wolt-blue dark:text-wolt-light text-2xl font-bold mb-4">03.</div>
-                    <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">Hurting Local Restaurants</h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                      Small businesses see their already-thin margins eaten by Wolt's massive commissions.
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
+              <InfoCardGrid 
+                cards={infoCardData.slice(0, 3)} 
+                columns={3}
+                className="mt-12"
+              />
             </div>
           </div>
         </section>
         
-        <section className="py-16 bg-black">
+        <section className="py-16 bg-gray-100 dark:bg-gray-800">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-white text-center font-omnes">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-gray-900 dark:text-white text-center font-omnes">
               The Real Wolt Experience
             </h2>
             
-            <FeatureCardGrid 
-              features={featureData.slice(0, 3)} 
-              className="mb-6"
-            />
-            
-            <FeatureCardGrid 
-              features={featureData.slice(3)} 
+            <InfoCardGrid 
+              cards={infoCardData}
+              columns={3}
             />
           </div>
         </section>

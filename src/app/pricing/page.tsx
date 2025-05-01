@@ -4,6 +4,8 @@ import PageHero from '@/components/PageHero';
 import ContentSection from '@/components/ContentSection';
 import Citation from '@/components/Citation';
 import ComparisonTable from '@/components/ComparisonTable';
+import InfoCardGrid from '@/components/InfoCardGrid';
+import pricingCardData from '@/data/pricingCardData';
 import Link from 'next/link';
 
 export default function PricingPage() {
@@ -126,15 +128,26 @@ export default function PricingPage() {
         title="Overpriced & Unfair Pricing"
         subtitle="How Wolt's fee structure hurts consumers and restaurants"
         color="primary"
-        imageUrl="/images/unfair_pricing.png"
       />
       
       <main>
+        {/* Key Pricing Issues Cards */}
+        <section className="py-12 bg-white dark:bg-gray-900">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+              The Price You Really Pay
+            </h2>
+            <InfoCardGrid 
+              cards={pricingCardData}
+              columns={3}
+              className="mb-8"
+            />
+          </div>
+        </section>
+        
         <ContentSection 
           title="Hidden Fees You're Paying"
-          bgColor="white"
-          imageUrl="/images/hidden_cost.png"
-          imageAlt="Hidden costs illustration showing increased prices"
+          bgColor="light"
         >
           <p className="mb-4">
             When you order through Wolt, the price you pay is significantly higher than ordering directly from the restaurant due to multiple layers of fees:
@@ -175,9 +188,7 @@ export default function PricingPage() {
         
         <ContentSection 
           title="Fee Comparison: Wolt vs Alternatives"
-          bgColor="light"
-          imageUrl="/images/hurting_restaurants.png"
-          imageAlt="Restaurant owner impacted by high delivery fees"
+          bgColor="white"
         >
           <p className="mb-6">
             This table compares the fees and policies across different food ordering options, showing how much more expensive Wolt is compared to alternatives:
@@ -203,7 +214,7 @@ export default function PricingPage() {
         
         <ContentSection 
           title="Anti-Competitive Price Parity Clauses"
-          bgColor="white"
+          bgColor="light"
         >
           <p className="mb-4">
             Wolt has enforced a rule that restaurants can't offer lower prices in-store or on other platforms than on Wolt.<Citation id="3" source="Danish Competition Authority Investigation, 2023" /> This anti-competitive clause (now under legal challenge in Denmark) forces prices up across the board and prevents you from getting a better deal by ordering directly.

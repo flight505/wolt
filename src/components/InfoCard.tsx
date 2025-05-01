@@ -13,6 +13,7 @@ interface InfoCardProps {
   className?: string;
   linkText?: string;
   linkHref?: string;
+  interactive?: boolean;
 }
 
 /**
@@ -26,12 +27,24 @@ export default function InfoCard({
   imageAlt = '',
   className = '',
   linkText,
-  linkHref
+  linkHref,
+  interactive = true
 }: InfoCardProps) {
+  // Build the card class based on interactive state
+  const cardClasses = `
+    bg-white dark:bg-gray-800 
+    rounded-xl
+    border border-gray-200 dark:border-gray-700
+    overflow-hidden
+    flex flex-col h-full
+    ${interactive ? 'hover:shadow-lg hover:-translate-y-1 transition-all duration-200' : ''}
+    ${className}
+  `;
+
   return (
-    <WoltCard className={`flex flex-col h-full overflow-hidden ${className}`}> 
-      {/* Image container with padding */}
-      <div className="px-6 pt-6 mb-4">
+    <WoltCard className={cardClasses}>
+      {/* Image Area (Top) */}
+      <div className="px-6 pt-6">
         <ImageContainer 
           src={imageSrc}
           alt={imageAlt || title}
@@ -41,12 +54,12 @@ export default function InfoCard({
         />
       </div>
 
-      {/* Text content with padding */}
-      <div className="flex flex-col flex-grow p-6 pt-0">
-        <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+      {/* Text Area (Bottom) */}
+      <div className="p-6 pt-4 flex flex-col flex-grow">
+        <h3 className="font-omnes font-bold text-xl mb-3 text-gray-900 dark:text-white">
           {title}
         </h3>
-        <p className="text-gray-700 dark:text-gray-300 text-base flex-grow">
+        <p className="text-base text-gray-700 dark:text-gray-300 flex-grow">
           {description}
         </p>
         
