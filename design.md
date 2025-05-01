@@ -96,16 +96,16 @@ Okay, understood. Let's integrate the detailed descriptions for all relevant pha
         *   `[x]` Populate this grid with the six items from `featureData.ts` (`hidden_cost.png`, `unfair_pricing.png`, etc.). Ensure images are displayed *inside* each `InfoCard`. Link each card appropriately (some link to `/pricing`, `/workers`, `/restaurants`, `/pledge`, `/alternatives`).
 
 *   **Task:** **Refactor Content Pages (`/pricing`, `/workers`, `/restaurants`):**
-    *   `[ ]` **Remove Standalone Images:** Search and remove `ImageContainer` or `<img>` tags used directly within `ContentSection` components on these pages.
-    *   `[ ]` **Remove `imageUrl` Prop Usage from `ContentSection`:** Modify `ContentSection.tsx` to remove `imageUrl`, `imageAlt`, `imagePosition` props and related logic, as images will now be inside `InfoCard`s.
-    *   `[ ]` **Integrate `InfoCard`s:** Identify key points in the text (e.g., "Commission Squeeze", "Dependence Trap", "Partners Without Protections", "Low Earnings"). Create data objects (similar to `featureData.ts` or `merchantCardData.ts`) for these points, assigning the previously removed images.
-    *   `[ ]` Use `InfoCardGrid` (with 1, 2, or 3 columns as appropriate) or single `InfoCard`s placed strategically within the content flow (e.g., after a paragraph introducing the concept) to display these points with their associated images.
-    *   `[ ]` **Ensure Text Flow:** Read through the modified pages to ensure text flows logically around the new card elements. Adjust surrounding text or `ContentSection` breaks as needed.
+    *   `[x]` **Remove Standalone Images:** Search and remove `ImageContainer` or `<img>` tags used directly within `ContentSection` components on these pages.
+    *   `[x]` **Remove `imageUrl` Prop Usage from `ContentSection`:** Modify `ContentSection.tsx` to remove `imageUrl`, `imageAlt`, `imagePosition` props and related logic, as images will now be inside `InfoCard`s.
+    *   `[x]` **Integrate `InfoCard`s:** Identify key points in the text (e.g., "Commission Squeeze", "Dependence Trap", "Partners Without Protections", "Low Earnings"). Create data objects (similar to `featureData.ts` or `merchantCardData.ts`) for these points, assigning the previously removed images.
+    *   `[x]` Use `InfoCardGrid` (with 1, 2, or 3 columns as appropriate) or single `InfoCard`s placed strategically within the content flow (e.g., after a paragraph introducing the concept) to display these points with their associated images.
+    *   `[x]` **Ensure Text Flow:** Read through the modified pages to ensure text flows logically around the new card elements. Adjust surrounding text or `ContentSection` breaks as needed.
 
 *   **Task:** **Improve Content Section Layout (`src/components/ContentSection.tsx`):**
-    *   `[ ]` Since image props are removed, simplify the internal layout to just handle the text content (`prose` container). Ensure it's centered or constrained appropriately (`max-w-4xl mx-auto` or similar).
-    *   `[ ]` Verify background color classes (`wolt-content-section-light`, `wolt-content-section-dark`) are applied correctly.
-    *   `[ ]` Specifically investigate `/pricing` or `/workers` pages to find and remove the cause of the vertical bar artifact seen in the video. Check for stray `border` classes or layout issues.
+    *   `[x]` Since image props are removed, simplify the internal layout to just handle the text content (`prose` container). Ensure it's centered or constrained appropriately (`max-w-4xl mx-auto` or similar).
+    *   `[x]` Verify background color classes (`wolt-content-section-light`, `wolt-content-section-dark`) are applied correctly.
+    *   `[x]` Specifically investigate `/pricing` or `/workers` pages to find and remove the cause of the vertical bar artifact seen in the video. Check for stray `border` classes or layout issues.
 
 *   **Task:** **Refine Image Handling (`src/components/ImageContainer.tsx`):**
     *   `[ ]` Double-check the CSS targeting `img[data-nimg="fill"]` in `wolt-design-system.css` (lines 291-314). Ensure the `min-height` rules are appropriate and don't cause unexpected layout issues now that images are primarily inside cards. Consider making height more flexible or controlled by the `InfoCard` props.
