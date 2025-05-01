@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import the Wolt design system */
+@import '../styles/wolt-design-system.css';
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: var(--wolt-gray-900);
+  background: var(--wolt-white);
+}
+
+/* Dark mode */
+.dark body {
+  color: var(--wolt-white);
+  background: var(--wolt-navy);
+} 

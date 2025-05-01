@@ -1,0 +1,365 @@
+/* Wolt Design System CSS
+ * This file implements styling based on Wolt's design language
+ */
+
+@font-face {
+  font-family: 'Omnes';
+  src: url('/Omnes Font Family/Omnes Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Omnes';
+  src: url('/Omnes Font Family/Omnes Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Omnes';
+  src: url('/Omnes Font Family/Omnes Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Omnes';
+  src: url('/Omnes Font Family/Omnes Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Omnes';
+  src: url('/Omnes Font Family/Omnes SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Wolt color palette */
+  --wolt-cyan: #009DE0;
+  --wolt-cyan-rgb: 0, 157, 224; /* RGB value for Tailwind opacity */
+  --wolt-cyan-dark: #0087C1;
+  --wolt-cyan-dark-rgb: 0, 135, 193;
+  --wolt-cyan-light: #54BCEA;
+  --wolt-cyan-light-rgb: 84, 188, 234;
+  --wolt-navy: #002A3A;
+  --wolt-navy-rgb: 0, 42, 58;
+  --wolt-navy-light: #003E55;
+  --wolt-navy-light-rgb: 0, 62, 85;
+  --wolt-dark: #1A1A1A;
+  --wolt-dark-rgb: 26, 26, 26;
+  --wolt-gray-900: #1F1F1F;
+  --wolt-gray-800: #333333;
+  --wolt-gray-700: #4D4D4D;
+  --wolt-gray-600: #666666;
+  --wolt-gray-500: #808080;
+  --wolt-gray-400: #999999;
+  --wolt-gray-300: #B3B3B3;
+  --wolt-gray-200: #CCCCCC;
+  --wolt-gray-100: #E6E6E6;
+  --wolt-gray-50: #F3F3F3;
+  --wolt-white: #FFFFFF;
+  --wolt-success: #00C26C;
+  --wolt-success-rgb: 0, 194, 108;
+  --wolt-error: #FF3B30;
+  --wolt-error-rgb: 255, 59, 48;
+  --wolt-warning: #FFCC00;
+  --wolt-warning-rgb: 255, 204, 0;
+
+  /* Spacing system */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+  --space-20: 5rem;    /* 80px */
+  --space-24: 6rem;    /* 96px */
+  
+  /* Typography */
+  --font-family-primary: 'Omnes', system-ui, sans-serif;
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Box shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Animation durations */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+}
+
+/* Apply Wolt fonts to the whole app */
+body {
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  color: var(--wolt-gray-900);
+  background-color: var(--wolt-white);
+}
+
+/* Wolt-style buttons */
+.wolt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all var(--duration-fast) ease-in-out;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  min-height: 48px;
+}
+
+.wolt-btn-primary {
+  background-color: var(--wolt-cyan);
+  color: var(--wolt-white);
+}
+
+.wolt-btn-primary:hover {
+  background-color: var(--wolt-cyan-dark);
+}
+
+.wolt-btn-secondary {
+  background-color: var(--wolt-white);
+  color: var(--wolt-cyan);
+  border: 1px solid var(--wolt-cyan);
+}
+
+.wolt-btn-secondary:hover {
+  background-color: var(--wolt-gray-50);
+}
+
+.wolt-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Wolt cards */
+.wolt-card {
+  background-color: var(--wolt-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+/* Page hero section */
+.wolt-hero {
+  padding: var(--space-16) var(--space-4);
+  background-color: var(--wolt-cyan);
+  color: var(--wolt-white);
+  text-align: center;
+}
+
+.wolt-hero h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+}
+
+.wolt-hero p {
+  font-size: var(--font-size-xl);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Feature card */
+.wolt-feature-card {
+  background-color: var(--wolt-navy);
+  color: var(--wolt-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.wolt-feature-card h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.wolt-feature-card-icon {
+  width: 64px;
+  height: 64px;
+  background-color: var(--wolt-cyan);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+/* Content section with alternating backgrounds */
+.wolt-content-section {
+  padding: var(--space-16) var(--space-4);
+}
+
+.wolt-content-section-light {
+  background-color: var(--wolt-white);
+}
+
+.wolt-content-section-dark {
+  background-color: var(--wolt-gray-50);
+}
+
+/* Wolt-style form elements */
+.wolt-input {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--wolt-gray-300);
+  border-radius: var(--radius-md);
+  background-color: var(--wolt-white);
+  color: var(--wolt-gray-900);
+  transition: border-color var(--duration-fast) ease-in-out;
+}
+
+.wolt-input:focus {
+  outline: none;
+  border-color: var(--wolt-cyan);
+  box-shadow: 0 0 0 2px rgba(0, 157, 224, 0.1);
+}
+
+.wolt-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+  color: var(--wolt-gray-800);
+}
+
+/* Stats display */
+.wolt-stat {
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.wolt-stat-value {
+  font-size: var(--font-size-5xl);
+  font-weight: 700;
+  color: var(--wolt-cyan);
+  margin-bottom: var(--space-2);
+}
+
+.wolt-stat-label {
+  font-size: var(--font-size-lg);
+  color: var(--wolt-gray-700);
+}
+
+/* Dark mode overrides */
+.dark body {
+  background-color: var(--wolt-navy);
+  color: var(--wolt-white);
+}
+
+.dark .wolt-card {
+  background-color: var(--wolt-navy-light);
+}
+
+.dark .wolt-content-section-light {
+  background-color: var(--wolt-navy);
+}
+
+.dark .wolt-content-section-dark {
+  background-color: var(--wolt-navy-light);
+}
+
+.dark .wolt-label {
+  color: var(--wolt-gray-200);
+}
+
+.dark .wolt-input {
+  background-color: var(--wolt-gray-800);
+  border-color: var(--wolt-gray-700);
+  color: var(--wolt-white);
+}
+
+.dark .wolt-btn-secondary {
+  background-color: transparent;
+  color: var(--wolt-cyan-light);
+}
+
+.dark .wolt-stat-label {
+  color: var(--wolt-gray-300);
+}
+
+/* Animation classes */
+.wolt-fade-in {
+  animation: fadeIn var(--duration-normal) ease-in-out;
+}
+
+.wolt-slide-up {
+  animation: slideUp var(--duration-normal) ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Image containers for Next.js Image with fill property */
+.relative > img[data-nimg="fill"] {
+  object-fit: contain;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ensure all image containers have proper height */
+div.relative:has(img[data-nimg="fill"]) {
+  min-height: 300px !important;
+  position: relative !important;
+  width: 100%;
+}
+
+/* Additional height for hero image containers */
+.wolt-hero .relative:has(img[data-nimg="fill"]) {
+  min-height: 300px !important;
+}
+
+/* Adjust content section image heights */
+.wolt-content-section .relative:has(img[data-nimg="fill"]) {
+  min-height: 300px !important;
+}
+
+/* Feature card image heights */
+.flex-col > .relative:has(img[data-nimg="fill"]) {
+  min-height: 250px !important;
+} 

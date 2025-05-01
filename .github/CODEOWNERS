@@ -1,0 +1,6 @@
+# Default owners for everything in the repo
+* @jesper
+
+# Specific owners for certain directories
+/src/ @jesper
+/.github/ @jesper 
