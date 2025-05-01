@@ -124,6 +124,56 @@ body {
   font-weight: 400;
   color: var(--wolt-gray-900);
   background-color: var(--wolt-white);
+  line-height: 1.5;
+}
+
+/* Typography styles for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-primary);
+  color: var(--wolt-gray-900);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+  font-weight: 700;
+  margin-bottom: var(--space-6);
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  margin-bottom: var(--space-5);
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+}
+
+h6 {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  margin-bottom: var(--space-2);
+}
+
+/* Paragraph styles */
+p {
+  margin-bottom: var(--space-4);
+  max-width: 70ch;
 }
 
 /* Wolt-style buttons */
@@ -335,31 +385,51 @@ body {
   to { transform: translateY(0); opacity: 1; }
 }
 
-/* Image containers for Next.js Image with fill property */
-.relative > img[data-nimg="fill"] {
+/* Image containers for Next.js Image component */
+img[data-nimg="fill"] {
   object-fit: contain;
-  padding: 0;
-  margin: 0;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Ensure all image containers have proper height */
-div.relative:has(img[data-nimg="fill"]) {
-  min-height: 300px !important;
-  position: relative !important;
+/* Base image container - ensures proper height */
+div.relative:has(> img[data-nimg="fill"]) {
+  min-height: 200px;
+  height: 100%;
   width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Additional height for hero image containers */
-.wolt-hero .relative:has(img[data-nimg="fill"]) {
-  min-height: 300px !important;
+/* Card-specific image heights */
+.px-6.pt-6 .relative:has(> img[data-nimg="fill"]) {
+  min-height: 180px;
+  max-height: 250px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
-/* Adjust content section image heights */
-.wolt-content-section .relative:has(img[data-nimg="fill"]) {
-  min-height: 300px !important;
+/* Hero section images should be taller */
+.wolt-hero .relative:has(> img[data-nimg="fill"]) {
+  min-height: 350px;
 }
 
-/* Feature card image heights */
-.flex-col > .relative:has(img[data-nimg="fill"]) {
-  min-height: 250px !important;
+/* Content section images */
+.wolt-content-section .relative:has(> img[data-nimg="fill"]) {
+  min-height: 280px;
+}
+
+/* Feature card images - more compact */
+.flex-col > .relative:has(> img[data-nimg="fill"]) {
+  min-height: 180px;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 640px) {
+  .wolt-hero .relative:has(> img[data-nimg="fill"]) {
+    min-height: 250px;
+  }
+  
+  .wolt-content-section .relative:has(> img[data-nimg="fill"]) {
+    min-height: 200px;
+  }
 } 

@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import WoltCard from './WoltCard';
-import ImageContainer from './ImageContainer';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import ImageContainer from './ImageContainer';
 
 interface InfoCardProps {
   title: string;
@@ -14,6 +14,8 @@ interface InfoCardProps {
   linkText?: string;
   linkHref?: string;
   interactive?: boolean;
+  imageHeight?: number;
+  objectFit?: 'contain' | 'cover' | 'fill';
 }
 
 /**
@@ -28,30 +30,56 @@ export default function InfoCard({
   className = '',
   linkText,
   linkHref,
-  interactive = true
+  interactive = true,
+  imageHeight = 200,
+  objectFit = 'contain'
 }: InfoCardProps) {
-  // Build the card class based on interactive state
-  const cardClasses = `
-    bg-white dark:bg-gray-800 
-    rounded-xl
-    border border-gray-200 dark:border-gray-700
-    overflow-hidden
-    flex flex-col h-full
-    ${interactive ? 'hover:shadow-lg hover:-translate-y-1 transition-all duration-200' : ''}
-    ${className}
-  `;
-
-  return (
-    <WoltCard className={cardClasses}>
+  // Animation variants for interactive cards
+  const cardVariants = {
+    initial: { 
+      scale: 1,
+      y: 0,
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+    },
+    hover: { 
+      scale: 1.02, 
+      y: -6, 
+      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' 
+    },
+    tap: { 
+      scale: 0.98,
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+    }
+  };
+  
+  // Base content of the card
+  const content = (
+    <motion.div 
+      className={`
+        bg-white dark:bg-gray-800 
+        rounded-xl border border-gray-200 dark:border-gray-700
+        overflow-hidden h-full
+        transition-all duration-300
+        ${className}
+      `}
+      initial="initial"
+      whileHover={interactive ? "hover" : undefined}
+      whileTap={interactive ? "tap" : undefined}
+      variants={interactive ? cardVariants : undefined}
+    >
       {/* Image Area (Top) */}
       <div className="px-6 pt-6">
-        <ImageContainer 
-          src={imageSrc}
-          alt={imageAlt || title}
-          height={180}
-          priority
-          className="mx-auto rounded-lg"
-        />
+        <div className="rounded-lg overflow-hidden">
+          <ImageContainer 
+            src={imageSrc}
+            alt={imageAlt || title}
+            height={imageHeight}
+            priority={false}
+            className="w-full"
+            objectFit={objectFit}
+            animated={!interactive} // Only animate the image if the card itself isn't interactive
+          />
+        </div>
       </div>
 
       {/* Text Area (Bottom) */}
@@ -59,21 +87,22 @@ export default function InfoCard({
         <h3 className="font-omnes font-bold text-xl mb-3 text-gray-900 dark:text-white">
           {title}
         </h3>
-        <p className="text-base text-gray-700 dark:text-gray-300 flex-grow">
+        <p className="text-base text-gray-600 dark:text-gray-300 flex-grow">
           {description}
         </p>
         
         {/* Optional link */}
         {linkText && linkHref && (
           <div className="mt-4 pt-2">
-            <Link 
-              href={linkHref} 
-              className="text-[--wolt-cyan] hover:text-[--wolt-cyan-light] font-medium inline-flex items-center"
+            <motion.span 
+              className="text-[--wolt-cyan] hover:text-[--wolt-cyan-light] font-medium inline-flex items-center group cursor-pointer"
+              whileHover={{ x: 4 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               {linkText}
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className="h-5 w-5 ml-1" 
+                className="h-5 w-5 ml-1 transform transition-transform group-hover:translate-x-1" 
                 viewBox="0 0 20 20" 
                 fill="currentColor"
               >
@@ -83,10 +112,21 @@ export default function InfoCard({
                   clipRule="evenodd" 
                 />
               </svg>
-            </Link>
+            </motion.span>
           </div>
         )}
       </div>
-    </WoltCard>
+    </motion.div>
   );
+  
+  // If card is interactive and has a link, wrap it in a Link component
+  if (interactive && linkHref) {
+    return (
+      <Link href={linkHref} className="block h-full">
+        {content}
+      </Link>
+    );
+  }
+  
+  return content;
 } 

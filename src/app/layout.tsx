@@ -44,7 +44,7 @@ export default function RootLayout({
           <LanguageProvider>
             <SkipToContent />
             <Header />
-            <main id="main-content" className="min-h-screen pt-24 md:pt-28 lg:pt-28">
+            <main id="main-content" className="min-h-screen pt-16 md:pt-20">
               {children}
             </main>
             <Footer />

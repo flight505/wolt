@@ -112,12 +112,12 @@ Okay, understood. Let's integrate the detailed descriptions for all relevant pha
     *   `[ ]` Ensure images within `InfoCard`s load efficiently (correct `sizes` attribute, potentially remove `priority` unless the card is ATF).
 
 *   **Task:** **Restyle Comparison Tables (`src/components/ComparisonTable.tsx`):**
-    *   `[ ]` **Visual Appearance:** Apply `border-collapse: collapse; width: 100%;`. Use `border-b border-gray-200 dark:border-gray-700` for subtle row separation. Apply alternating row backgrounds: `tbody tr:nth-child(even) { @apply bg-gray-50 dark:bg-gray-800; }`.
-    *   `[ ]` **Header Row (`thead tr`):** Apply `bg-gray-100 dark:bg-gray-800 text-left`. Header cells (`th`): Apply `px-4 py-3 font-semibold text-gray-700 dark:text-gray-300`. Center-align headers for data columns (`text-center`).
-    *   `[ ]` **Cell Padding (`td`):** Apply `px-4 py-3`.
-    *   `[ ]` **Typography:** Use `text-sm` or `text-base`. Left-align first column (`text-left`), center-align others (`text-center`). Apply `font-medium` to the first column label.
-    *   `[ ]` **Highlighting:** Verify the green/red/blue/yellow backgrounds applied by `getHighlightColor` are subtle (e.g., `bg-green-100 dark:bg-green-900`) and text contrast remains good.
-    *   `[ ]` **Responsiveness:** Wrap the `<table>` in a `div` with `overflow-x-auto` to allow horizontal scrolling on small screens. Add a subtle shadow to the container if it scrolls to indicate more content.
+    *   `[x]` **Visual Appearance:** Apply `border-collapse: collapse; width: 100%;`. Use `border-b border-gray-200 dark:border-gray-700` for subtle row separation. Apply alternating row backgrounds: `tbody tr:nth-child(even) { @apply bg-gray-50 dark:bg-gray-800; }`.
+    *   `[x]` **Header Row (`thead tr`):** Apply `bg-gray-100 dark:bg-gray-800 text-left`. Header cells (`th`): Apply `px-4 py-3 font-semibold text-gray-700 dark:text-gray-300`. Center-align headers for data columns (`text-center`).
+    *   `[x]` **Cell Padding (`td`):** Apply `px-4 py-3`.
+    *   `[x]` **Typography:** Use `text-sm` or `text-base`. Left-align first column (`text-left`), center-align others (`text-center`). Apply `font-medium` to the first column label.
+    *   `[x]` **Highlighting:** Verify the green/red/blue/yellow backgrounds applied by `getHighlightColor` are subtle (e.g., `bg-green-100 dark:bg-green-900`) and text contrast remains good.
+    *   `[x]` **Responsiveness:** Wrap the `<table>` in a `div` with `overflow-x-auto` to allow horizontal scrolling on small screens. Add a subtle shadow to the container if it scrolls to indicate more content.
 
 ### **Phase 4: Pledge Flow & Call to Action**
 

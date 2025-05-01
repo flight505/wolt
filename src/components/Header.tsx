@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTheme } from './ThemeProvider';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -43,59 +43,75 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
-  const headerBgClass = isScrolled
-    ? 'bg-white/90 dark:bg-gray-800/90 shadow-md backdrop-blur-md'
+  const headerClasses = isScrolled
+    ? 'bg-white/95 dark:bg-gray-800/95 backdrop-blur-md shadow-sm'
     : 'bg-transparent';
 
-  const logoColorClass = isScrolled
+  const logoClasses = isScrolled
     ? 'text-[--wolt-cyan] dark:text-[--wolt-cyan-light]'
     : 'text-white';
 
-  const linkColorClass = isScrolled
-    ? 'text-gray-900 dark:text-gray-200 hover:text-[--wolt-cyan] dark:hover:text-[--wolt-cyan-light]'
-    : 'text-white/80 hover:text-white';
+  const linkClasses = isScrolled
+    ? 'text-gray-800 dark:text-gray-200 hover:text-[--wolt-cyan] dark:hover:text-[--wolt-cyan-light]'
+    : 'text-white/90 hover:text-white';
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${headerBgClass}`}>
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${headerClasses}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Left Section: Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className={`text-2xl font-omnes font-bold transition-colors ${logoColorClass}`}>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex-shrink-0"
+          >
+            <Link href="/" className={`text-2xl font-omnes font-bold transition-colors ${logoClasses}`}>
               Cancel Wolt
             </Link>
-          </div>
+          </motion.div>
 
-          {/* Center/Left Section: Navigation Links */}
-          <nav className="hidden md:flex items-center space-x-8 ml-8">
-            <Link href="/" className={`font-medium transition-colors ${linkColorClass}`}>
+          {/* Center Section: Navigation Links */}
+          <motion.nav 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="hidden md:flex items-center space-x-8 ml-8"
+          >
+            <Link href="/" className={`font-medium transition-colors ${linkClasses}`}>
               {t('common.nav.home')}
             </Link>
-            <Link href="/about" className={`font-medium transition-colors ${linkColorClass}`}>
+            <Link href="/about" className={`font-medium transition-colors ${linkClasses}`}>
               {t('common.nav.about')}
             </Link>
-            <Link href="/pricing" className={`font-medium transition-colors ${linkColorClass}`}>
+            <Link href="/pricing" className={`font-medium transition-colors ${linkClasses}`}>
               {t('common.nav.pricing')}
             </Link>
-            <Link href="/workers" className={`font-medium transition-colors ${linkColorClass}`}>
+            <Link href="/workers" className={`font-medium transition-colors ${linkClasses}`}>
               {t('common.nav.workers')}
             </Link>
-            <Link href="/restaurants" className={`font-medium transition-colors ${linkColorClass}`}>
+            <Link href="/restaurants" className={`font-medium transition-colors ${linkClasses}`}>
               {t('common.nav.restaurants')}
             </Link>
-            <Link href="/alternatives" className={`font-medium transition-colors ${linkColorClass}`}>
+            <Link href="/alternatives" className={`font-medium transition-colors ${linkClasses}`}>
               {t('common.nav.alternatives')}
             </Link>
-          </nav>
+          </motion.nav>
 
           {/* Right Section: Action Icons */}
-          <div className="flex items-center space-x-4">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex items-center space-x-4"
+          >
             {/* Pledge Button */}
             <div className="hidden md:block">
               <Link href="/pledge">
                 <WoltButton 
                   variant="primary" 
                   size="small"
+                  className="rounded-full px-6"
                 >
                   {t('common.nav.pledge')}
                 </WoltButton>
@@ -105,7 +121,7 @@ export default function Header() {
             {/* Theme Toggle */}
             <button 
               onClick={toggleTheme}
-              className={`${linkColorClass} transition-colors p-2`}
+              className={`${linkClasses} transition-colors p-2 rounded-full hover:bg-gray-100/10`}
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {theme === 'dark' ? (
@@ -127,7 +143,7 @@ export default function Header() {
             {/* Mobile Menu Toggle */}
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`md:hidden ${linkColorClass} p-2`}
+              className={`md:hidden ${linkClasses} p-2 rounded-full hover:bg-gray-100/10`}
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? (
@@ -140,7 +156,7 @@ export default function Header() {
                 </svg>
               )}
             </button>
-          </div>
+          </motion.div>
         </div>
       </div>
 
