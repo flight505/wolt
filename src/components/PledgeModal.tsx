@@ -11,6 +11,25 @@ interface PledgeModalProps {
   onClose: () => void;
 }
 
+type TranslationType = {
+  [key: string]: {
+    title: string;
+    subtitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    commentLabel: string;
+    commentPlaceholder: string;
+    submitButton: string;
+    cancelButton: string;
+    successTitle: string;
+    successMessage: string;
+    verifyNow: string;
+    closeButton: string;
+  }
+};
+
 export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
   const { language } = useLanguage();
   const [name, setName] = useState('');
@@ -21,7 +40,7 @@ export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
   const [success, setSuccess] = useState(false);
   const [verificationUrl, setVerificationUrl] = useState<string | null>(null);
 
-  const translations = {
+  const translations: TranslationType = {
     en: {
       title: 'Sign the Pledge',
       subtitle: 'Join the movement against unfair business practices',
@@ -30,7 +49,7 @@ export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
       emailLabel: 'Email Address',
       emailPlaceholder: 'Enter your email',
       commentLabel: 'Why are you signing? (Optional)',
-      commentPlaceholder: 'Share why you're joining the movement...',
+      commentPlaceholder: "Share why you're joining the movement...",
       submitButton: 'Sign the Pledge',
       cancelButton: 'Cancel',
       successTitle: 'Thank you for signing!',
@@ -56,7 +75,7 @@ export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
     }
   };
 
-  const text = translations[language];
+  const text = translations[language as keyof TranslationType];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,7 +163,7 @@ export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
 
           {success ? (
             <div className="text-center py-6">
-              <div className="w-16 h-16 bg-wolt-blue rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-[--wolt-cyan] rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
@@ -157,7 +176,7 @@ export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
                 <div className="mb-6">
                   <Link 
                     href={verificationUrl}
-                    className="text-wolt-blue hover:text-wolt-blue-dark dark:text-wolt-blue-light dark:hover:text-wolt-blue underline"
+                    className="text-[--wolt-cyan] hover:text-[--wolt-cyan-dark] dark:text-[--wolt-cyan-light] dark:hover:text-[--wolt-cyan] underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -191,7 +210,7 @@ export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
                     id="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-wolt-blue focus:border-wolt-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[--wolt-cyan] focus:border-[--wolt-cyan] dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     placeholder={text.namePlaceholder}
                     disabled={isSubmitting}
                   />
@@ -206,7 +225,7 @@ export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-wolt-blue focus:border-wolt-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[--wolt-cyan] focus:border-[--wolt-cyan] dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     placeholder={text.emailPlaceholder}
                     disabled={isSubmitting}
                   />
@@ -220,7 +239,7 @@ export default function PledgeModal({ isOpen, onClose }: PledgeModalProps) {
                     id="comment"
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-wolt-blue focus:border-wolt-blue dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[--wolt-cyan] focus:border-[--wolt-cyan] dark:bg-gray-700 dark:border-gray-600 dark:text-white"
                     placeholder={text.commentPlaceholder}
                     rows={3}
                     disabled={isSubmitting}

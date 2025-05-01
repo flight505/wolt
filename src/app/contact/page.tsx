@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import PageHero from '@/components/PageHero';
 import ContentSection from '@/components/ContentSection';
+import React from 'react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -23,7 +24,7 @@ export default function ContactPage() {
     }));
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
@@ -62,7 +63,7 @@ export default function ContactPage() {
                     <p className="text-gray-700 dark:text-gray-300 mb-6">{submitMessage}</p>
                     <button 
                       onClick={() => setSubmitMessage('')}
-                      className="px-6 py-3 bg-wolt-blue hover:bg-wolt-dark text-white rounded-lg font-medium transition duration-200"
+                      className="px-6 py-3 bg-[--wolt-cyan] hover:bg-[--wolt-navy] text-white rounded-lg font-medium transition duration-200"
                     >
                       Send Another Message
                     </button>
@@ -132,7 +133,7 @@ export default function ContactPage() {
                         <button 
                           type="submit" 
                           disabled={isSubmitting}
-                          className={`px-6 py-3 bg-wolt-blue hover:bg-wolt-dark text-white rounded-lg font-medium transition duration-200 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                          className={`px-6 py-3 bg-[--wolt-cyan] hover:bg-[--wolt-navy] text-white rounded-lg font-medium transition duration-200 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
                           {isSubmitting ? 'Sending...' : 'Send Message'}
                         </button>
@@ -162,7 +163,7 @@ export default function ContactPage() {
             </ul>
             
             <p>
-              For urgent media requests, please email <a href="mailto:media@cancelwolt.dk" className="text-wolt-blue hover:underline">media@cancelwolt.dk</a> or select "Media Request" in the contact form above.
+              For urgent media requests, please email <a href="mailto:media@cancelwolt.dk" className="text-[--wolt-cyan] hover:underline">media@cancelwolt.dk</a> or select "Media Request" in the contact form above.
             </p>
           </div>
         </ContentSection>

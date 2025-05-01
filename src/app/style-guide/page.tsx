@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import ContentSection from '@/components/ContentSection';
 import WoltButton from '@/components/WoltButton';
 import Link from 'next/link';
+import ColorStyleGuide from '@/components/ColorStyleGuide';
 
 export default function StyleGuidePage() {
   const [count, setCount] = useState(0);
@@ -61,55 +62,7 @@ export default function StyleGuidePage() {
             
             <h2 className="text-3xl font-bold mb-8">Colors</h2>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-              <div className="flex flex-col">
-                <div className="h-24 bg-[--wolt-cyan] rounded-lg mb-2"></div>
-                <p className="font-medium">Wolt Cyan</p>
-                <p className="text-gray-500 text-sm">#009DE0</p>
-              </div>
-              
-              <div className="flex flex-col">
-                <div className="h-24 bg-[--wolt-cyan-dark] rounded-lg mb-2"></div>
-                <p className="font-medium">Wolt Cyan Dark</p>
-                <p className="text-gray-500 text-sm">#0087C1</p>
-              </div>
-              
-              <div className="flex flex-col">
-                <div className="h-24 bg-[--wolt-navy] rounded-lg mb-2"></div>
-                <p className="font-medium">Wolt Navy</p>
-                <p className="text-gray-500 text-sm">#002A3A</p>
-              </div>
-              
-              <div className="flex flex-col">
-                <div className="h-24 bg-[--wolt-dark] rounded-lg mb-2"></div>
-                <p className="font-medium">Wolt Dark</p>
-                <p className="text-gray-500 text-sm">#1A1A1A</p>
-              </div>
-              
-              <div className="flex flex-col">
-                <div className="h-24 bg-[--wolt-success] rounded-lg mb-2"></div>
-                <p className="font-medium">Success</p>
-                <p className="text-gray-500 text-sm">#00C26C</p>
-              </div>
-              
-              <div className="flex flex-col">
-                <div className="h-24 bg-[--wolt-error] rounded-lg mb-2"></div>
-                <p className="font-medium">Error</p>
-                <p className="text-gray-500 text-sm">#FF3B30</p>
-              </div>
-              
-              <div className="flex flex-col">
-                <div className="h-24 bg-[--wolt-warning] rounded-lg mb-2"></div>
-                <p className="font-medium">Warning</p>
-                <p className="text-gray-500 text-sm">#FFCC00</p>
-              </div>
-              
-              <div className="flex flex-col">
-                <div className="h-24 bg-[--wolt-gray-100] rounded-lg mb-2 border"></div>
-                <p className="font-medium">Gray 100</p>
-                <p className="text-gray-500 text-sm">#E6E6E6</p>
-              </div>
-            </div>
+            <ColorStyleGuide />
             
             <h2 className="text-3xl font-bold mb-8">Buttons</h2>
             

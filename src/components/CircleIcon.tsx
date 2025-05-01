@@ -30,8 +30,8 @@ export default function CircleIcon({
     large: 'w-12 h-12'
   };
   
-  // Base styles for circle
-  const circleStyles = `${sizeMap[size]} rounded-full bg-wolt-blue flex items-center justify-center text-white ${className}`;
+  // Base styles for circle - using CSS variable based color
+  const circleStyles = `${sizeMap[size]} rounded-full bg-[--wolt-cyan] flex items-center justify-center text-white ${className}`;
   
   // Animation variants
   const variants = {

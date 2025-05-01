@@ -46,13 +46,9 @@ export default function Header() {
       : 'bg-transparent dark:bg-transparent shadow-none'}
   `;
   
-  // Dynamic text color classes based on scroll position
-  const textColorClass = isScrolled 
-    ? 'text-gray-900 dark:text-white' 
-    : 'text-white';
-  
+  // Using CSS variable based hover colors
   const linkColorClass = isScrolled
-    ? 'text-gray-700 dark:text-gray-200 hover:text-wolt-blue dark:hover:text-wolt-light'
+    ? 'text-gray-700 dark:text-gray-200 hover:text-[--wolt-cyan] dark:hover:text-[--wolt-cyan-light]'
     : 'text-white/80 hover:text-white';
   
   return (
@@ -64,7 +60,7 @@ export default function Header() {
           transition={{ duration: 0.5 }}
           className="flex items-center"
         >
-          <Link href="/" className={`text-2xl font-bold ${isScrolled ? 'text-wolt-blue dark:text-wolt-light' : 'text-white'}`}>
+          <Link href="/" className={`text-2xl font-bold ${isScrolled ? 'text-[--wolt-cyan] dark:text-[--wolt-cyan-light]' : 'text-white'}`}>
             Cancel Wolt
           </Link>
         </motion.div>

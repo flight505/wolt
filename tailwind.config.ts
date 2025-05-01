@@ -10,14 +10,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Deprecated - use CSS variables instead
+        // DEPRECATED - DO NOT USE - Use CSS variables with bracket notation instead
+        // Example: bg-[--wolt-cyan] instead of bg-wolt-blue
+        // See src/lib/WoltColors.ts for utility functions and constants
         wolt: {
-          blue: '#009DE0',
-          'blue-dark': '#0072A3',
-          'blue-light': '#33B1E6',
-          'blue-lighter': '#E6F6FC',
+          blue: '#009DE0', // DEPRECATED - Use --wolt-cyan CSS variable
+          'blue-dark': '#0072A3', // DEPRECATED - Use --wolt-cyan-dark CSS variable
+          'blue-light': '#33B1E6', // DEPRECATED - Use --wolt-cyan-light CSS variable
+          'blue-lighter': '#E6F6FC', // DEPRECATED - Use --wolt-cyan-light CSS variable with opacity
         },
-        // Use these RGBA values for opacity variants
+        // Use these RGBA values for opacity variants - PREFERRED METHOD
         'wolt-cyan': {
           DEFAULT: 'rgba(var(--wolt-cyan-rgb), <alpha-value>)',
           dark: 'rgba(var(--wolt-cyan-dark-rgb), <alpha-value>)',

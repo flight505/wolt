@@ -10,7 +10,7 @@ interface ContentSectionProps {
   imageUrl?: string;
   imageAlt?: string;
   imagePosition?: 'left' | 'right';
-  bgColor?: 'light' | 'dark';
+  bgColor?: 'light' | 'dark' | 'white';
   id?: string;
   className?: string;
 }
@@ -25,8 +25,21 @@ export default function ContentSection({
   id,
   className = '',
 }: ContentSectionProps) {
-  const bgColorClass = 
-    bgColor === 'light' ? 'wolt-content-section-light' : 'wolt-content-section-dark';
+  // Determine background color class based on bgColor prop
+  const getBgColorClass = () => {
+    switch (bgColor) {
+      case 'white':
+        return 'bg-white dark:bg-[--wolt-navy]';
+      case 'light':
+        return 'wolt-content-section-light';
+      case 'dark':
+        return 'wolt-content-section-dark';
+      default:
+        return 'wolt-content-section-light';
+    }
+  };
+  
+  const bgColorClass = getBgColorClass();
   
   return (
     <section id={id} className={`wolt-content-section ${bgColorClass} ${className}`}>

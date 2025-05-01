@@ -19,26 +19,26 @@
 ### **Phase 1: Global Styles & Foundation**
 
 *   **Task:** **Standardize Color Palette:**
-    *   `[ ]` Review `tailwind.config.ts` and `src/styles/wolt-design-system.css`.
-    *   `[ ]` Ensure all components consistently use the CSS variables defined in `wolt-design-system.css` (e.g., `--wolt-cyan`, `--wolt-navy`, etc.).
-    *   `[ ]` Remove or deprecate direct color definitions in `tailwind.config.ts` if they conflict with the CSS variables.
-    *   `[ ]` Verify dark mode colors in CSS variables provide good contrast and visual appeal.
+    *   `[x]` Review `tailwind.config.ts` and `src/styles/wolt-design-system.css`.
+    *   `[x]` Ensure all components consistently use the CSS variables defined in `wolt-design-system.css` (e.g., `--wolt-cyan`, `--wolt-navy`, etc.).
+    *   `[x]` Remove or deprecate direct color definitions in `tailwind.config.ts` if they conflict with the CSS variables.
+    *   `[x]` Verify dark mode colors in CSS variables provide good contrast and visual appeal.
 *   **Task:** **Standardize Typography:**
     *   `[ ]` Ensure the Omnes font (`font-omnes` in Tailwind config, loaded via `OmnesFontLoader.tsx`) is applied correctly to headings and key elements as per Wolt's style.
     *   `[ ]` Verify body text uses the specified fallback (Inter or sans-serif defined in Tailwind).
     *   `[ ]` Review font sizes and weights defined in `wolt-design-system.css` and ensure they are applied consistently across components and pages.
     *   `[ ]` Improve text readability: Limit line width for body text sections (e.g., using `prose` classes or max-width containers within `ContentSection`). Avoid text stretching across the entire page width.
 *   **Task:** **Review Base Layout:**
-    *   `[ ]` Check `src/app/layout.tsx` for overall structure.
-    *   `[ ]` Ensure `main#main-content` has appropriate top padding to account for the fixed header.
+    *   `[x]` Check `src/app/layout.tsx` for overall structure.
+    *   `[x]` Ensure `main#main-content` has appropriate top padding to account for the fixed header.
     *   `[ ]` Verify `ThemeProvider` and `LanguageProvider` wrap the application correctly.
 
 ### **Phase 2: Header & Footer Refinement**
 
 *   **Task:** **Redesign Header Component (`src/components/Header.tsx`):**
-    *   `[ ]` Restyle the header to closely match the reference Wolt header (clean, modern).
+    *   `[x]` Restyle the header to closely match the reference Wolt header (clean, modern).
     *   `[ ]` Implement smooth background/opacity transition on scroll (current implementation `isScrolled` logic seems okay, but styling needs work). Ensure transparency when at the top and a slightly opaque background (white/dark) when scrolled.
-    *   `[ ]` Fix Navigation Links: Ensure nav links (`/`, `/about`, `/pricing`, etc.) are clearly visible, well-spaced, and use the correct hover states (`linkColorClass` needs refinement based on scroll state and theme). Currently, they are likely invisible when the header is transparent.
+    *   `[x]` Fix Navigation Links: Ensure nav links (`/`, `/about`, `/pricing`, etc.) are clearly visible, well-spaced, and use the correct hover states (`linkColorClass` needs refinement based on scroll state and theme). Currently, they are likely invisible when the header is transparent.
     *   `[ ]` Restyle Theme Toggle Button: Make the sun/moon icon button visually appealing and consistent with the overall design.
     *   `[ ]` Restyle Language Switcher (`src/components/LanguageSwitcher.tsx`): Replace the basic text/dropdown with a more polished flag/language code selector, matching modern UI standards. Ensure dropdown styling is consistent with the theme.
     *   `[ ]` Implement Mobile Navigation: The current code has a placeholder hamburger icon (`md:hidden`). Implement a functional slide-out or dropdown menu for mobile devices.
